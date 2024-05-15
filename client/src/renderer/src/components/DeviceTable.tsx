@@ -1,6 +1,7 @@
 import React from 'react';
 import dummyData from '../../../../resources/dummy-data/discovered-machines.json'
 import { Device } from '@renderer/types';
+import DeviceTableRow from './DeviceTableRow';
 import '../main.css'
 
 const devices: Device[] = [
@@ -113,15 +114,7 @@ const NetworkTable = () => {
                 </thead>
                 <tbody>
                     {devices.map(device => (
-                        <tr key={device.ip_address} className="bg-white border-b">
-                            <td className="px-4 py-2">{device.hostname}</td>
-                            <td className="px-4 py-2">{device.ip_address}</td>
-                            <td className="px-4 py-2">{device.mac_address}</td>
-                            <td className="px-4 py-2">{device.operating_system}</td>
-                            <td className="px-4 py-2">{device.device_type}</td>
-                            <td className="px-4 py-2">{device.network_segment}</td>
-                            <td className="px-4 py-2">{device.response_time}</td>
-                        </tr>
+                        <DeviceTableRow key={device.ip_address} device={device}/>
                     ))}
                 </tbody>
             </table>
