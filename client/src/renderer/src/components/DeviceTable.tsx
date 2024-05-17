@@ -98,27 +98,42 @@ const devices: Device[] = [
 ];
 
 const NetworkTable = () => {
-    return (
-        <div className="container mx-auto mt-5">
-            <table className="w-full my-0 align-middle text-dark border-neutral-200">
-                <thead className="align-bottom">
-                    <tr className='font-semibold text-[0.95rem] text-secondary-dark'>
-                        <th className="px-4 py-2">Hostname</th>
-                        <th className="px-4 py-2">IP Address</th>
-                        <th className="px-4 py-2">MAC Address</th>
-                        <th className="px-4 py-2">Operating System</th>
-                        <th className="px-4 py-2">Device Type</th>
-                        <th className="px-4 py-2">Network Segment</th>
-                        <th className="px-4 py-2">Response Time</th>
+    return (<>
+        <header className="px-5 py-4 border-b border-gray-100">
+                <h2 className="font-semibold text-gray-800">Devices</h2>
+            </header>
+        <div className="p-3">
+            <div className='overflow-x-auto'>
+            <table className="table-auto w-full">
+                <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+                    <tr>
+                        <th className="p-2 whitespace-nowrap">
+                            <div className="font-semibold text-left">Hostname</div>
+                        </th>
+                        <th className="p-2 whitespace-nowrap">
+                            <div className="font-semibold text-left">IP Address</div>
+                        </th>
+                        {/* <th className="px-4 py-2">MAC Address</th> */}
+                        <th className="p-2 whitespace-nowrap">
+                            <div className="font-semibold text-left">Operating System</div>
+                        </th>
+                        <th className="p-2 whitespace-nowrap">
+                            <div className="font-semibold text-left">Device Type</div>
+                        </th>
+                        {/* <th className="px-4 py-2">Network Segment</th> */}
+                        <th className="p-2 whitespace-nowrap">
+                            <div className="font-semibold text-centerS">Response Time</div>
+                        </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className='text-sm divide-y divide-gray-100'>
                     {devices.map(device => (
                         <DeviceTableRow key={device.ip_address} device={device}/>
                     ))}
                 </tbody>
-            </table>
+            </table></div>
         </div>
+        </>
     );
 }
 
