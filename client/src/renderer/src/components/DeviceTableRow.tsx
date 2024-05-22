@@ -18,14 +18,15 @@ const DeviceTableRow: React.FC<TableRowProps> = ({ device }) => {
       <td className="p-2 whitespace-nowrap">
         <div className="text-left">{device.ip_address}</div>
       </td>
-      {/* <td className="px-4 py-2">{device.mac_address}</td> */}
       <td className="p-2 whitespace-nowrap">
-        <div className="text-left">{device.operating_system}</div></td>
+        <div className="text-left">{device.operating_system}</div>
+      </td>
       <td className="p-2 whitespace-nowrap">
-        <div className="text-left">{device.device_type}</div></td>
-      {/* <td className="px-4 py-2">{device.network_segment}</td> */}
+        <div className="text-left">{device.device_type}</div>
+      </td>
       <td className="p-2 whitespace-nowrap">
-        <div className="text-center">{device.response_time}</div></td>
+        <div className="text-center">{device.response_time}</div>
+      </td>
     </tr>
   );
 }

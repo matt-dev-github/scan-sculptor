@@ -1,0 +1,7 @@
+<ports>
+<extraports state="filtered" count="1712">
+<extrareasons reason="host-prohibiteds" count="1712"/>
+</extraports>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="45"/><service name="http" product="Apache httpd" version="1.3.39" extrainfo="(Unix) PHP/4.4.7" method="probed" conf="10" /><script id="robots.txt" output="User-Agent: * /img/ /redir/ " /><script id="HTML title" output="freshmeat.net: Welcome to freshmeat.net" /></port>
+<port protocol="tcp" portid="443"><state state="closed" reason="reset" reason_ttl="46"/><service name="https" method="table" conf="3" /></port>
+</ports>

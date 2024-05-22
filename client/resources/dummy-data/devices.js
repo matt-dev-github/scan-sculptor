@@ -1,4 +1,4 @@
-[
+const devices = [
         {
             "hostname": "server01.example.com",
             "ip_address": "192.168.1.2",
@@ -89,4 +89,6 @@
             "network_segment": "VLAN3",
             "response_time": "12ms"
         }
-];
+]
+
+export default devices;
