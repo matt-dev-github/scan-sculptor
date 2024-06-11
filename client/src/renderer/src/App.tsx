@@ -1,5 +1,6 @@
 import DeviceTable from './components/DeviceTable'
 import PortTable from './components/PortTable'
+import ScanCommandForm from './components/ScanCommandForm' 
 import './main.css'
 
 function App(): JSX.Element {
@@ -7,6 +8,7 @@ function App(): JSX.Element {
 
   return (
     <>
+      <ScanCommandForm />
       <DeviceTable />
       <PortTable />
     </>

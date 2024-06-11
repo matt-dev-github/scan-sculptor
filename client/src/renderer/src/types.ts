@@ -16,3 +16,11 @@ export interface Port {
     timestamp: string;
   }
   
+
+// Define the available scan types
+export const scanTypes = [
+    { label: 'SYN Scan', value: '-sS' },
+    { label: 'UDP Scan', value: '-sU' },
+    { label: 'TCP Connect Scan', value: '-sT' },
+    // Add more scan types as needed
+];

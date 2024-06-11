@@ -1,20 +1,19 @@
 import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
-import icon from '../../resources/icon.png?asset'
+import path from 'path';
+import { exec } from 'child_process';
 
-function createWindow(): void {
+function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
-    show: false,
-    autoHideMenuBar: true,
     
-    ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
-      preload: join(__dirname, '../preload/index.js'),
-      sandbox: false
+      preload: path.join(__dirname, 'preload.js'), // Preload script to enable ipcRenderer
+      contextIsolation: true,
+      enableRemoteModule: false,
     }
   })
 
@@ -62,6 +61,27 @@ app.whenReady().then(() => {
   })
 })
 
+ipcMain.handle('execute-nmap', async (event, args) => {
+  const { scanType, options, target } = args;
+
+  return new Promise((resolve, reject) => {
+    // Construct the Nmap command
+    const command = `nmap ${scanType} ${options} ${target}`;
+
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        reject(`Error: ${error.message}`);
+        return;
+      }
+      if (stderr) {
+        reject(`Error: ${stderr}`);
+        return;
+      }
+      resolve(stdout);
+    });
+  });
+});
+
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
@@ -69,7 +89,7 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
   }
-})
+});
 
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.
